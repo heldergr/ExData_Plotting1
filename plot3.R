@@ -1,0 +1,10 @@
+source("power.comsumption.R")
+pc <- readPowerConsumption("household_power_consumption.txt")
+
+png(filename = "plot3.png", width = 480, height = 480)
+plot(pc$DateTime, y = pc$Sub_metering_1, type = "n", ylab = "Energy sub metering", xlab = "")
+lines(pc$DateTime, y = pc$Sub_metering_1)
+lines(pc$DateTime, y = pc$Sub_metering_2, col = "red")
+lines(pc$DateTime, y = pc$Sub_metering_3, col = "blue")
+legend("topright", lwd = 1, pch=c(NA,NA,NA),col=c("black", "red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+dev.off()
